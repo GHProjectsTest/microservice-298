@@ -82,7 +82,60 @@ public class Mensa extends RESTService {
 
     private final Mensa service = (Mensa) Context.getCurrent().getService();
 
-    
+      /**
+   * 
+   * getDishRatings
+   *
+   * 
+   * @param id  a String
+   * 
+   * @return Response 
+   * 
+   */
+  @GET
+  @Path("/dishes/{id}/ratings")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.TEXT_PLAIN)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "notfound"),
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "ok")
+  })
+  @ApiOperation(value = "getDishRatings", notes = " ")
+  public Response getDishRatings(@PathParam("id") String id) {
+
+
+
+
+     
+    // service method invocations
+
+     
+
+
+
+
+    // notfound
+    boolean notfound_condition = true;
+    if(notfound_condition) {
+      JSONObject notfound = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_NOT_FOUND).entity(notfound.toJSONString()).build();
+    }
+    // ok
+    boolean ok_condition = true;
+    if(ok_condition) {
+      JSONObject ok = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_OK).entity(ok.toJSONString()).build();
+    }
+    return null;
+  }
+
+
 
   }
 
