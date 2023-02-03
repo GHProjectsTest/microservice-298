@@ -84,6 +84,78 @@ public class Mensa extends RESTService {
 
       /**
    * 
+   * postDishRating
+   *
+   * 
+   * @param id  a String
+   * @param body  a JSONObject
+
+   * 
+   * @return Response 
+   * 
+   */
+  @POST
+  @Path("/dishes/{id}/ratings")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_BAD_REQUEST, message = "badrequest"),
+       @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "notfound"),
+       @ApiResponse(code = HttpURLConnection.HTTP_CREATED, message = "created")
+  })
+  @ApiOperation(value = "postDishRating", notes = " ")
+  public Response postDishRating(@PathParam("id") String id, String body) {
+   classes.DishRating payloadbodyObject = new classes().new DishRating();
+   try { 
+       payloadbodyObject.fromJSON(body);
+   } catch (Exception e) { 
+       e.printStackTrace();
+       JSONObject result = new JSONObject();
+       return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity("Cannot convert json to object").build();
+   }
+
+
+
+     
+    // service method invocations
+
+     
+
+
+
+
+    // badrequest
+    boolean badrequest_condition = true;
+    if(badrequest_condition) {
+      JSONObject badrequest = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(badrequest.toJSONString()).build();
+    }
+    // notfound
+    boolean notfound_condition = true;
+    if(notfound_condition) {
+      JSONObject notfound = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_NOT_FOUND).entity(notfound.toJSONString()).build();
+    }
+    // created
+    boolean created_condition = true;
+    if(created_condition) {
+      JSONObject created = new classes().new DishRating().toJSON();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_CREATED).entity(created.toJSONString()).build();
+    }
+    return null;
+  }
+
+  /**
+   * 
    * getDishRatings
    *
    * 
